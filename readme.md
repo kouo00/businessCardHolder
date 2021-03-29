@@ -1,1 +1,1 @@
-Vizitkovník
+Business card holder nette app
