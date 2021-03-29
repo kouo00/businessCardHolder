@@ -8,7 +8,7 @@
 		<div class="businessCardDiv" n:foreach="$userBusinessCards as $businessCardID => $values">
 			<a n:href="EditBusinessCard! , id => $businessCardID" >Upravit</a>
 			<a n:href="DeleteBusinessCard! , id => $businessCardID" >Smazat</a>
-			{include '../components/businessCard.latte', values => $values}
+			{control businessCard, $values}
 		</div>
 	{/if}
 </div>

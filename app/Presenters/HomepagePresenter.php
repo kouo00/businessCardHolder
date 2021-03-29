@@ -3,7 +3,9 @@
 
 namespace App\Presenters;
 
+use App\Components\BusinessCardControl;
 use App\Model\BusinessCardManager;
+use Nette\ComponentModel\IComponent;
 
 
 final class HomepagePresenter extends BasePresenter
@@ -41,5 +43,12 @@ final class HomepagePresenter extends BasePresenter
 		$this->businessCardManager->delete($id);
 		$this->flashMessage('Vizitka smazána');
 		$this->redirect('this');
+	}
+
+	public function createComponentBusinessCard(): IComponent
+	{
+		$control = new BusinessCardControl();
+
+		return $control;
 	}
 }
