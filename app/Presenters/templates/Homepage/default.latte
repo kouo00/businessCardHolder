@@ -1,0 +1,33 @@
+{block content}
+
+<div id="content">
+	<a n:href="NewBusinessCard! "><button>Nová vizitka</button></a>
+	{if empty($userBusinessCards)}
+		<p>Nemáte žádné vizitky</p>
+	{else}
+		<div class="businessCardDiv" n:foreach="$userBusinessCards as $businessCardID => $values">
+			<a n:href="EditBusinessCard! , id => $businessCardID" >Upravit</a>
+			<a n:href="DeleteBusinessCard! , id => $businessCardID" >Smazat</a>
+			<table class="businessCard">
+				<tr>
+					<td colspan="2"><h2 class="cardMiddle">{$values->users->name}</h2></td>
+				</tr>
+				<tr>
+					<td colspan="2" class="cardMiddle function" >{$values->function}</td>
+				</tr>
+				<tr>
+					<td>{$values->companyName}</td>
+					<td>{$values->web}</td>
+				</tr>
+				<tr>
+					<td>{$values->companyAddress}</td>
+					<td>{$values->tel1}</td>
+				</tr>
+				<tr>
+					<td>{$values->email}</td>
+					<td>{$values->tel2}</td>
+				</tr>
+			</table>
+		</div>
+	{/if}
+</div>
