@@ -23,32 +23,13 @@ final class HomepagePresenter extends BasePresenter
 		parent::startup();
 	}
 
-	public function renderDefault(): void
-	{
-		$this->template->userBusinessCards = $this->businessCardManager->getRows([BusinessCardManager::COLUMN_USERS_ID => $this->user->getId()]);
-	}
-
 	public function handleNewBusinessCard(): void
 	{
 		$this->redirect('BusinessCard:New');
 	}
 
-	public function handleEditBusinessCard($id): void
+	public function createComponentBusinessCards(): IComponent
 	{
-		$this->redirect('BusinessCard:edit', ['id' => $id]);
-	}
-
-	public function handleDeleteBusinessCard($id): void
-	{
-		$this->businessCardManager->delete($id);
-		$this->flashMessage('Vizitka smazána');
-		$this->redirect('this');
-	}
-
-	public function createComponentBusinessCard(): IComponent
-	{
-		$control = new BusinessCardControl();
-
-		return $control;
+		return new BusinessCardControl($this->businessCardManager);
 	}
 }
