@@ -2,7 +2,9 @@
 
 <div id="content">
 	<a n:href="NewBusinessCard! "><button>Nová vizitka</button></a>
-		<div class="businessCardDiv">
-			{control businessCards}
+		<div class="businessCardDiv" n:foreach="$businessCards as $businessCardID => $dummyData">
+			<a n:href="EditBusinessCard! , id => $businessCardID" >Upravit</a>
+			<a n:href="DeleteBusinessCard! , id => $businessCardID" >Smazat</a>
+			{control "businessCards-$businessCardID"}
 		</div>
 </div>
